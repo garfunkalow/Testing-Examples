@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices.ComTypes;
-
-namespace FakeApp 
+﻿namespace FakeApp 
 {
     public class AmazingService
     {
@@ -17,23 +14,16 @@ namespace FakeApp
         internal string DoAllTheThings(int valueOne, int valueTwo)
         {
             // valueOne += 50;
+            
             var resultAdd = _math.Add(valueOne, valueTwo);
             string filePath = resultAdd.ToString();
+            
             // filePath = "Definitely Should Not Pass";
-            var fileCreated = _file.CreateFile(resultAdd.ToString());
+            
+            var fileCreated = _file.CreateFile(filePath);
             return fileCreated;
         }
 
-        // internal void DoMoreOfTheThings(int valueOne, int valueTwo)
-        // {
-        //     
-        //     var resultAdd = _math.Add(valueOne, valueTwo);
-        //     
-        //     
-        //     var fileCreated = _file.CreateFile(filePath);
-        //
-        //     var resultSubtract = _math.Subtract((uint)valueOne, (uint)valueTwo);
-        //     var fileUpsert = _file.UpsertFileContents(resultSubtract.ToString());
-        // }
+      
     }
 }
