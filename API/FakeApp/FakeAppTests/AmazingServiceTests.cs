@@ -30,18 +30,15 @@ namespace FakeAppTests
         [Test]
         public void DoAllTheThings_CallsAdd_IsAny_Loose()
         {
-
             //Arrange
-            int valueOne = _fixture.Create<int>();
-            int valueTwo = _fixture.Create<int>();
-            int expectedAdd = _fixture.Create<int>();
+            int expectedAddReturnValueReturnValue = _fixture.Create<int>();
             _math.Setup(x => x.Add(
                 It.IsAny<int>(), 
                 It.IsAny<int>()))
-            .Returns(expectedAdd);
+            .Returns(expectedAddReturnValueReturnValue);
 
             //Act
-            var actualFileCreated = _amazingService.DoAllTheThings(valueOne, valueTwo);
+            var actualFileCreated = _amazingService.DoAllTheThings(default, default);
 
             //Assert
             //Since we're only caring if CallsAdd happened and we are not returning the result of CallsAdd
@@ -59,12 +56,12 @@ namespace FakeAppTests
             //Arrange
             int valueOne = _fixture.Create<int>();
             int valueTwo = _fixture.Create<int>();
-            int expectedAdd = _fixture.Create<int>();
+            int expectedAddReturnValue = _fixture.Create<int>();
 
             _math.Setup(x => x.Add(
                 It.Is<int>(y => y == valueOne), 
                 It.Is<int>(y => y == valueTwo)))
-            .Returns(expectedAdd);
+            .Returns(expectedAddReturnValue);
 
             //Act
             var actualFileCreated = _amazingService.DoAllTheThings(valueOne, valueTwo);
@@ -95,14 +92,14 @@ namespace FakeAppTests
         public void DoAllTheThings_CallsCreateFile_Is_Loose()
         {
             //Arrange
-            int expectedAdd = _fixture.Create<int>();
+            int expectedAddReturnValue = _fixture.Create<int>();
             string expectedFileCreated = _fixture.Create<string>();
 
 
             //Since we're not having any expectations on _math.Add,
             //there isn't a way to know what's expected unless you know the details of how _math.Add works
             //So now what?
-            _file.Setup(x => x.CreateFile(It.Is<string>(y => y.Equals(expectedAdd.ToString())))).Returns(expectedFileCreated);
+            _file.Setup(x => x.CreateFile(It.Is<string>(y => y.Equals(expectedAddReturnValue.ToString())))).Returns(expectedFileCreated);
             //Act
             var actualFileCreated = _amazingService.DoAllTheThings(default, default);
 
@@ -114,9 +111,9 @@ namespace FakeAppTests
         public void DoAllTheThings_CallsAdd_CallsCreateFile_IsAny_Loose()
         {
             //Arrange
-            int expectedAdd = _fixture.Create<int>();
+            int expectedAddReturnValue = _fixture.Create<int>();
             string expectedFileCreated = _fixture.Create<string>();
-            _math.Setup(x => x.Add(It.IsAny<int>(), It.IsAny<int>())).Returns(expectedAdd);
+            _math.Setup(x => x.Add(It.IsAny<int>(), It.IsAny<int>())).Returns(expectedAddReturnValue);
             _file.Setup(x => x.CreateFile(It.IsAny<string>())).Returns(expectedFileCreated);
             //Act
             var actualFileCreated = _amazingService.DoAllTheThings(default, default);
@@ -132,10 +129,10 @@ namespace FakeAppTests
             //Arrange
             int valueOne = _fixture.Create<int>();
             int valueTwo = _fixture.Create<int>();
-            int expectedAdd = _fixture.Create<int>();
+            int expectedAddReturnValue = _fixture.Create<int>();
             string expectedFileCreated = _fixture.Create<string>();
-            _math.Setup(x => x.Add(It.Is<int>(y => y == valueOne), It.Is<int>(y => y == valueTwo))).Returns(expectedAdd);
-            _file.Setup(x => x.CreateFile(It.Is<string>(y => y.Equals(expectedAdd.ToString())))).Returns(expectedFileCreated);
+            _math.Setup(x => x.Add(It.Is<int>(y => y == valueOne), It.Is<int>(y => y == valueTwo))).Returns(expectedAddReturnValue);
+            _file.Setup(x => x.CreateFile(It.Is<string>(y => y.Equals(expectedAddReturnValue.ToString())))).Returns(expectedFileCreated);
             //Act
             var actualFileCreated = _amazingService.DoAllTheThings(valueOne, valueTwo);
 
@@ -154,9 +151,9 @@ namespace FakeAppTests
             //Arrange
             int valueOne = _fixture.Create<int>();
             int valueTwo = _fixture.Create<int>();
-            int expectedAdd = _fixture.Create<int>();
+            int expectedAddReturnValue = _fixture.Create<int>();
 
-            _math.Setup(x => x.Add(It.IsAny<int>(), It.IsAny<int>())).Returns(expectedAdd);
+            _math.Setup(x => x.Add(It.IsAny<int>(), It.IsAny<int>())).Returns(expectedAddReturnValue);
             //Act
             var actualFileCreated = _amazingService.DoAllTheThings(valueOne, valueTwo);
 
@@ -169,9 +166,9 @@ namespace FakeAppTests
         public void DoAllTheThings_CallsAdd_CallsCreateFile_IsAny_Strict()
         {
             //Arrange
-            int expectedAdd = _fixture.Create<int>();
+            int expectedAddReturnValue = _fixture.Create<int>();
             string expectedFileCreated = _fixture.Create<string>();
-            _math.Setup(x => x.Add(It.IsAny<int>(), It.IsAny<int>())).Returns(expectedAdd);
+            _math.Setup(x => x.Add(It.IsAny<int>(), It.IsAny<int>())).Returns(expectedAddReturnValue);
             _file.Setup(x => x.CreateFile(It.IsAny<string>())).Returns(expectedFileCreated);
             //Act
             var actualFileCreated = _amazingService.DoAllTheThings(default, default);
@@ -188,10 +185,10 @@ namespace FakeAppTests
             //Arrange
             int valueOne = _fixture.Create<int>();
             int valueTwo = _fixture.Create<int>();
-            int expectedAdd = _fixture.Create<int>();
+            int expectedAddReturnValue = _fixture.Create<int>();
             string expectedFileCreated = _fixture.Create<string>();
-            _math.Setup(x => x.Add(It.Is<int>(y => y == valueOne), It.Is<int>(y => y == valueTwo))).Returns(expectedAdd);
-            _file.Setup(x => x.CreateFile(It.Is<string>(y => y == expectedAdd.ToString()))).Returns(expectedFileCreated);
+            _math.Setup(x => x.Add(It.Is<int>(y => y == valueOne), It.Is<int>(y => y == valueTwo))).Returns(expectedAddReturnValue);
+            _file.Setup(x => x.CreateFile(It.Is<string>(y => y == expectedAddReturnValue.ToString()))).Returns(expectedFileCreated);
             //Act
             var actualFileCreated = _amazingService.DoAllTheThings(valueOne, valueTwo);
 
