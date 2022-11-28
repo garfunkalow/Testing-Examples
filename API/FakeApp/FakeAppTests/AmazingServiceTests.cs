@@ -17,7 +17,7 @@ namespace FakeAppTests
         [SetUp]
         public void SetUp()
         {
-            MockBehavior behavior = MockBehavior.Strict;
+            MockBehavior behavior = MockBehavior.Loose;
             _math = new Mock<IMath>(behavior);
             _file = new Mock<IFile>(behavior);
             _amazingService = new AmazingService(_file.Object, _math.Object);
