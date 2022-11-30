@@ -31,11 +31,11 @@ namespace FakeAppTests
         public void DoAllTheThings_CallsAdd_IsAny_Loose()
         {
             //Arrange
-            int expectedAddReturnValueReturnValue = _fixture.Create<int>();
+            int expectedAddReturnValue = _fixture.Create<int>();
             _math.Setup(x => x.Add(
-                It.IsAny<int>(), 
+                It.IsAny<int>(), //  <- Syntax reads as, Expect _math.Add(Anything, Anything) always return 
                 It.IsAny<int>()))
-            .Returns(expectedAddReturnValueReturnValue);
+            .Returns(expectedAddReturnValue);
 
             //Act
             var actualFileCreated = _amazingService.DoAllTheThings(default, default);
