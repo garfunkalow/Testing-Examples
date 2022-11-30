@@ -11,7 +11,7 @@
             _math = math;
         }
 
-        internal string DoAllTheThings(int valueOne, int valueTwo)
+        public string DoAllTheThings(int valueOne, int valueTwo)
         {
             // valueOne += 50;
             
