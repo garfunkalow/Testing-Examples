@@ -33,26 +33,23 @@ namespace FakeAppTests
             //Arrange
             int expectedAddReturnValue = _fixture.Create<int>();
             _math.Setup(x => x.Add(
-                It.IsAny<int>(), //  <- Syntax reads as, Expect _math.Add(Anything, Anything) always return 
-                It.IsAny<int>()))
+                It.IsAny<int>(), //  <- Syntax reads as, Expect a call to _math.Add(Anything, Anything) 
+                It.IsAny<int>())) //    always return ExpectedAddReturnValue
             .Returns(expectedAddReturnValue);
 
             //Act
             var actualFileCreated = _amazingService.DoAllTheThings(default, default);
 
             //Assert
-            //Since we're only caring if CallsAdd happened and we are not returning the result of CallsAdd
+            //Since we only have expectations that CallsAdd happened and we are not returning the result of file.CreateFile
             //We need to verify the call did happen
             _math.VerifyAll();
             actualFileCreated.Should().BeNullOrWhiteSpace();
         }
 
-
-
         [Test]
         public void DoAllTheThings_CallsAdd_Is_Loose()
         {
-
             //Arrange
             int valueOne = _fixture.Create<int>();
             int valueTwo = _fixture.Create<int>();
