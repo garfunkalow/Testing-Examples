@@ -92,7 +92,6 @@ namespace FakeAppTests
             int expectedAddReturnValue = _fixture.Create<int>();
             string expectedFileCreated = _fixture.Create<string>();
 
-
             //Since we're not having any expectations on _math.Add,
             //there isn't a way to know what's expected unless you know the details of how _math.Add works
             //So now what?
@@ -156,7 +155,7 @@ namespace FakeAppTests
 
             //Assert
             //This fails due to the nature of Strict.
-            //IFile.Create is called yet no setup.
+            //IFile.Create is called yet no setup/Expectation.
         }
 
         [Test]
