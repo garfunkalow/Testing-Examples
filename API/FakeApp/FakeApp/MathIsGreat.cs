@@ -1,14 +1,15 @@
-﻿namespace FakeApp;
-
-public class MathIsGreat : IMath
+﻿namespace FakeApp
 {
-    public int Add(int first, int second)
+    public class MathIsGreat : IMath
     {
-        return first + second;
-    }
+        public int Add(int first, int second)
+        {
+            return first + second;
+        }
 
-    public uint Subtract(uint first, uint second)
-    {
-        return first - second;
+        public uint Subtract(uint first, uint second)
+        {
+            return first - second;
+        }
     }
 }

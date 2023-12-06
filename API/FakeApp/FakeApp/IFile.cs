@@ -1,8 +1,10 @@
-﻿namespace FakeApp;
-
-public interface IFile
+﻿namespace FakeApp
 {
-    string SaveFileContents(string filePath);
-    string CreateFile(string filePath);
-    string UpsertFileContents(string filePath);
+    public interface IFile
+    {
+        string SaveFileContents(string filePath);
+        string CreateFile(string filePath);
+        string UpsertFileContents(string filePath);
+        int GetFileLength(string fileName);
+    }
 }
